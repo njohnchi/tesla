@@ -1,20 +1,30 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
+import SideBar from '@/components/layout/SideBar.vue'
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-
-      <nav>
-        <RouterLink to="/">Reports</RouterLink>
-      </nav>
+  <div class="container">
+    <SideBar />
+    <div class="content">
+      <RouterView />
     </div>
-  </header>
-
-  <RouterView />
+  </div>
 </template>
 
 <style scoped>
+.container {
+  height: 100vh;
+  width: 100vw;
+  background-color: #e5e7eb;
+  display: flex
+}
 
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 24px;
+  padding-right: 24px;
+}
 </style>

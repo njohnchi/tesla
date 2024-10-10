@@ -3,10 +3,10 @@ import PageHeader from '@/components/layout/PageHeader.vue'
 </script>
 
 <template>
-  <PageHeader title="Reports." />
+  <PageHeader title="Activities." />
 
   <main>
-    <p>Reports content goes here</p>
+    <p>Activities content goes here</p>
   </main>
 </template>
 
