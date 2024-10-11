@@ -3,6 +3,15 @@ import { createStore, useStore as baseUseStore, Store } from 'vuex'
 
 export interface State {
   count: number
+  activities: Array<{ id: number, type: string, description: string, time: string, icon: string }>
+  people: Array<{ name: string, role: string, image: string }>
+  books: Array<{ title: string, author: string, cover: string }>
+  timeframeOptions: string[]
+  peopleOptions: string[]
+  topicOptions: string[]
+  timeframeFilter: string
+  peopleFilter: string
+  topicFilter: string
 }
 
 export const key: InjectionKey<Store<State>> = Symbol()
@@ -30,11 +39,26 @@ export const store = createStore<State>({
       { title: "You Don't Know JS", author: "Kyle Simpson", cover: "/b_2.png" },
       { title: "Eloquent JavaScript", author: "Marijn Haverbeke", cover: "/b_1.png" },
     ],
+    timeframeOptions: ['All', 'Today', 'This Week', 'This Month'],
+    peopleOptions: ['All', 'John Doe', 'Jane Smith', 'Emily Adams', 'Michael Brown'],
+    topicOptions: ['All', 'Design', 'Development', 'Marketing', 'Meeting'],
+    timeframeFilter: 'All',
+    peopleFilter: 'All',
+    topicFilter: 'All',
   },
   mutations: {
     increment (state: State) {
       state.count++
-    }
+    },
+    setTimeframeFilter (state: State, filter: string) {
+      state.timeframeFilter = filter
+    },
+    setPeopleFilter (state: State, filter: string) {
+      state.peopleFilter = filter
+    },
+    setTopicFilter (state: State, filter: string) {
+      state.topicFilter = filter
+    },
   }
 })
 

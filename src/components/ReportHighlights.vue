@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Card from '@/components/Card.vue'
+import Card from '@/components/BaseCard.vue'
 const series = [
   {
     name: 'series-1',
@@ -11,7 +11,7 @@ const options = {
   chart: {
     type: 'area',
     toolbar: {
-      show: false, // Disable the toolbar controls (zoom, pan, etc.)
+      show: false,
     },
   },
   stroke: {
@@ -28,35 +28,35 @@ const options = {
     }
   },
   dataLabels: {
-    enabled: false, // Hide data labels
+    enabled: false,
   },
   xaxis: {
     labels: {
-      show: false, // Hide x-axis labels
+      show: false,
     },
     axisBorder: {
-      show: false, // Hide x-axis line
+      show: false,
     },
     axisTicks: {
-      show: false, // Hide x-axis ticks
+      show: false,
     },
   },
   yaxis: {
     labels: {
-      show: false, // Hide y-axis labels
+      show: false,
     },
     axisBorder: {
-      show: false, // Hide y-axis line
+      show: false,
     },
     axisTicks: {
-      show: false, // Hide y-axis ticks
+      show: false,
     },
   },
   grid: {
-    show: false, // Optionally hide grid lines
+    show: false,
   },
   legend: {
-    show: false, // Hide the legend
+    show: false,
   },
 }
 </script>

@@ -1,10 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import ArrowDownIcon from '@/components/icons/ArrowDownIcon.vue'
 import { onClickOutside } from '@vueuse/core'
 
-const options = ['Option 1', 'Option 2', 'Option 3'];
-const selectedOption = ref<string | null>(null);
+const props = defineProps<{
+  options: string[],
+  title: string,
+  modelValue: string | null
+}>()
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string): void
+}>()
+
+const selectedOption = ref<string>(props.modelValue || '');
 const isOpen = ref(false);
 const target = ref(null)
 
@@ -20,12 +29,16 @@ const selectOption = (option: string) => {
   selectedOption.value = option;
   isOpen.value = false;
 };
+
+watch(() => selectedOption.value, (value) => {
+  emit('update:modelValue', value)
+})
 </script>
 
 <template>
   <div ref="target" class="dropdown">
     <button class="dropdown-button" @click="toggleDropdown">
-      <span>Timeframe: </span>
+      <span>{{ title }}: </span>
       <span class="option">{{ selectedOption || 'Select an option' }}</span>
       <ArrowDownIcon class="icon" />
     </button>
@@ -86,7 +99,7 @@ const selectOption = (option: string) => {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   list-style: none;
   padding: 0;
-  max-height: 150px;
+  max-height: 250px;
   overflow-y: auto;
   z-index: 10
 }

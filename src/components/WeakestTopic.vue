@@ -1,5 +1,24 @@
 <script setup lang="ts">
-import Card from '@/components/Card.vue'
+import Card from '@/components/BaseCard.vue'
+import { ref } from 'vue'
+
+const topics = ref([
+  {
+    name: 'Food Safety',
+    progress: 74,
+    image: '/b_1.png'
+  },
+  {
+    name: 'Compliance Basics Procedures',
+    progress: 52,
+    image: '/b_2.png'
+  },
+  {
+    name: 'Company Networking',
+    progress: 36,
+    image: '/b_3.png'
+  }
+])
 </script>
 
 <template>
@@ -8,41 +27,15 @@ import Card from '@/components/Card.vue'
       Weakest Topic
     </template>
     <div class="container">
-      <div class="banner-wrapper">
-        <img class="banner-image" src="/b_1.png" alt="banner">
+      <div class="banner-wrapper" v-for="topic in topics" :key="topic.name">
+        <img class="banner-image" :src="topic.image" :alt="topic.name">
         <div class="content">
-          <h3 class="topic-name">Food Safety</h3>
+          <h3 class="topic-name">{{ topic.name }}</h3>
           <div class="status">
             <div class="progress-bar-container">
-              <div class="progress-bar" style="width: 74%;"></div>
+              <div class="progress-bar" :style="`width: ${topic.progress}%;`"></div>
             </div>
-            <span class="progress-text">74%</span>
-            <span class="connect-text">connect</span>
-          </div>
-        </div>
-      </div>
-      <div class="banner-wrapper">
-        <img class="banner-image" src="/b_2.png" alt="banner">
-        <div class="content">
-          <h3 class="topic-name">Compliance Basics Procedures </h3>
-          <div class="status">
-            <div class="progress-bar-container">
-              <div class="progress-bar" style="width: 52%;"></div>
-            </div>
-            <span class="progress-text">52%</span>
-            <span class="connect-text">connect</span>
-          </div>
-        </div>
-      </div>
-      <div class="banner-wrapper">
-        <img class="banner-image" src="/b_3.png" alt="banner">
-        <div class="content">
-          <h3 class="topic-name">Company Networking</h3>
-          <div class="status">
-            <div class="progress-bar-container">
-              <div class="progress-bar" style="width: 36%;"></div>
-            </div>
-            <span class="progress-text">36%</span>
+            <span class="progress-text">{{ topic.progress }}%</span>
             <span class="connect-text">connect</span>
           </div>
         </div>
