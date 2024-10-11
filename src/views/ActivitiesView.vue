@@ -1,21 +1,16 @@
 <script setup lang="ts">
 import PageHeader from '@/components/layout/PageHeader.vue'
+import { useStore } from '@/store'
 
-const activities = [
-  { id: 1, type: "comment", description: "John commented on a task", time: "2 hours ago", icon: "💬" },
-  { id: 2, type: "upload", description: "Anna uploaded a file", time: "5 hours ago", icon: "📁" },
-  { id: 3, type: "update", description: "Project settings updated", time: "1 day ago", icon: "⚙️" },
-  { id: 4, type: "task", description: "New task assigned to you", time: "2 days ago", icon: "✅" },
-  { id: 5, type: "meeting", description: "Meeting scheduled with the client", time: "3 days ago", icon: "📅" },
-];
+const store = useStore()
 </script>
 
 <template>
   <PageHeader title="Activities." />
 
-  <main>
+  <main class="activities-page">
     <div class="activities-list">
-      <div v-for="activity in activities" :key="activity.id" class="activity-card">
+      <div v-for="activity in store.state.activities" :key="activity.id" class="activity-card">
         <div class="activity-icon">{{ activity.icon }}</div>
         <div class="activity-details">
           <p class="activity-description">{{ activity.description }}</p>
@@ -29,18 +24,10 @@ const activities = [
 <style scoped>
 .activities-page {
   padding: 2rem;
-  background-color: #f9fafb;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.page-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #374151;
-  margin-bottom: 2rem;
 }
 
 .activities-list {

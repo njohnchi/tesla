@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import PageHeader from '@/components/layout/PageHeader.vue'
+import { useStore } from '@/store'
 
-const people = [
-  { name: "John Doe", role: "Software Engineer", image: "/p_1.png" },
-  { name: "Jane Smith", role: "Product Manager", image: "/p_2.png" },
-  { name: "Emily Adams", role: "UX Designer", image: "/p_1.png" },
-  { name: "Michael Brown", role: "Data Scientist", image: "/p_2.png" },
-]
+const store = useStore()
 </script>
 
 <template>
@@ -14,7 +10,7 @@ const people = [
 
   <main>
     <div class="people-grid">
-      <div v-for="(person, index) in people" :key="index" class="person-card">
+      <div v-for="(person, index) in store.state.people" :key="index" class="person-card">
         <img :src="person.image" :alt="person.name" class="person-image" />
         <div class="person-details">
           <h3 class="person-name">{{ person.name }}</h3>

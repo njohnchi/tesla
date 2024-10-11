@@ -1,21 +1,16 @@
 <script setup lang="ts">
 import PageHeader from '@/components/layout/PageHeader.vue'
+import { useStore } from '@/store'
 
-const books = [
-  { title: "The Pragmatic Programmer", author: "Andrew Hunt", cover: "/b_5.png" },
-  { title: "Clean Code", author: "Robert C. Martin", cover: "/b_4.png" },
-  { title: "JavaScript: The Good Parts", author: "Douglas Crockford", cover: "/b_3.png" },
-  { title: "You Don't Know JS", author: "Kyle Simpson", cover: "/b_2.png" },
-  { title: "Eloquent JavaScript", author: "Marijn Haverbeke", cover: "/b_1.png" },
-];
+const store = useStore()
 </script>
 
 <template>
   <PageHeader title="Library." />
 
-  <main>
+  <main class="">
     <div class="library-grid">
-      <div v-for="(book, index) in books" :key="index" class="book-card">
+      <div v-for="(book, index) in store.state.books" :key="index" class="book-card">
         <img :src="book.cover" :alt="book.title" class="book-cover" />
         <div class="book-details">
           <h3 class="book-title">{{ book.title }}</h3>
@@ -27,22 +22,6 @@ const books = [
 </template>
 
 <style scoped>
-.library-page {
-  padding: 2rem;
-  background-color: #f4f7fb;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.page-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #374151;
-  margin-bottom: 2rem;
-}
-
 .library-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
