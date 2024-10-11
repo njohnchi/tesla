@@ -26,5 +26,7 @@ import SideBar from '@/components/layout/SideBar.vue'
   flex-direction: column;
   padding-left: 24px;
   padding-right: 24px;
+  overflow-y: auto;
+  padding-bottom: 60px;
 }
 </style>

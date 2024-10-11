@@ -26,12 +26,12 @@ defineProps<{
 
 .nav-link.active,
 .nav-link:hover {
-  background-color: #bfdbfe;
+  background-color: #1B59F81A;
   color: #1B59F8;
 }
 
 .nav-link.active {
-  background-color: #bfdbfe;
+  background-color: #1B59F81A;
   color: #1B59F8;
 }
 </style>

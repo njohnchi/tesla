@@ -38,6 +38,8 @@ defineProps<{
   padding: 12px;
   font-size: 14px;
   transition: color 0.3s;
+  border: 0;
+  background-color: transparent;
 }
 
 .download-btn:hover {
