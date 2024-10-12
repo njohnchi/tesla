@@ -12,6 +12,7 @@ declare module 'vue' {
     timeframeFilter: string
     peopleFilter: string
     topicFilter: string
+    activityFilter: string
   }
 
   interface ComponentCustomProperties {

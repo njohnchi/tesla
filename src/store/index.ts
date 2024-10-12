@@ -12,6 +12,7 @@ export interface State {
   timeframeFilter: string
   peopleFilter: string
   topicFilter: string
+  activityFilter: string
 }
 
 export const key: InjectionKey<Store<State>> = Symbol()
@@ -45,6 +46,7 @@ export const store = createStore<State>({
     timeframeFilter: 'All',
     peopleFilter: 'All',
     topicFilter: 'All',
+    activityFilter: 'Month'
   },
   mutations: {
     increment (state: State) {
@@ -59,6 +61,9 @@ export const store = createStore<State>({
     setTopicFilter (state: State, filter: string) {
       state.topicFilter = filter
     },
+    setActivityFilter (state: State, filter: string) {
+      state.activityFilter = filter
+    }
   }
 })
 

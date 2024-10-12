@@ -1,79 +1,62 @@
 <script setup lang="ts">
 import Card from '@/components/BaseCard.vue'
 import ArrowDownIcon from '@/components/icons/ArrowDownIcon.vue'
-import { ref } from 'vue'
+import { ref, computed, watchEffect } from 'vue'
+import { useActivity } from '@/composables/use-activity'
+import { useStore } from '@/store'
+import { onClickOutside } from '@vueuse/core'
 
-const selectedOption = ref('Month')
+const store = useStore()
+const { options, series, updateChart } = useActivity()
 const isOpen = ref(false)
 const toggleDropdown = () => {
   isOpen.value = !isOpen.value
 }
+const target = ref(null)
 
-const series = [
-  {
-    name: 'series-1',
-    data: [30, 40, 145, 50, 49, 160, 70, 91, 125, 150, 200, 120]
+const selectedOption = computed({
+  get() {
+    return store.state.activityFilter;
+  },
+  set(value) {
+    store.commit('setActivityFilter', value);
   }
-]
+})
 
-const options = {
-  chart: {
-    type: 'bar',
-    height: '200px',
-    toolbar: {
-      show: false,
-    },
-  },
-  plotOptions: {
-    bar: {
-      borderRadius: 1,
-      columnWidth: '20%'
-    }
-  },
-  stroke: {
-    curve: 'smooth',
-    width: 1
-  },
-  xaxis:{
-    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-  },
-  yaxis: {
-    min: 0,
-    max: 200,
-    tickAmount: 4,
-    labels: {
-      show: true,
-    },
-    axisBorder: {
-      show: false,
-    },
-    axisTicks: {
-      show: false,
-    },
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  legend: {
-    show: false,
-  },
+const update = (option: string) => {
+  selectedOption.value = option
+  isOpen.value = false
 }
+
+onClickOutside(target, () => {
+  isOpen.value = false
+})
+
+watchEffect(() => {
+  updateChart(selectedOption.value)
+})
 </script>
 
 <template>
   <Card>
     <template #header>
-      <span class="activity-chart-title">
+      <div class="activity-chart-title">
         Activity
-        <button class="dropdown-button" @click="toggleDropdown">
-          <span class="option">{{ selectedOption }}</span>
-          <ArrowDownIcon class="icon" />
-        </button>
-      </span>
+        <div class="dropdown-container" ref="target">
+          <button class="dropdown-button" @click="toggleDropdown">
+            <span class="option">{{ selectedOption }}</span>
+            <ArrowDownIcon class="icon" />
+          </button>
+          <ul v-if="isOpen" class="dropdown-menu">
+            <li @click="update('Month')">Month</li>
+            <li @click="update('Week')">Week</li>
+          </ul>
+        </div>
+      </div>
     </template>
     <template #footer>
-      <div class="activity-chart">
-        <apexchart height="230px" :options="options" :series="series"></apexchart >
+      <div class="activity-chart" :key="selectedOption">
+        <apexchart height="230px" :options="options" :series="series"></apexchart>
       </div>
     </template>
   </Card>
@@ -85,10 +68,14 @@ const options = {
   margin: 0 15px;
 }
 
-.activity-chart-title{
+.activity-chart-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.dropdown-container {
+  position: relative;
 }
 
 .dropdown-button {
@@ -101,5 +88,31 @@ const options = {
   text-align: left;
   display: flex;
   align-items: center;
+}
+
+.dropdown-button:hover {
+  color: #1B59F8;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  margin-top: 5px;
+  list-style: none;
+  z-index: 30;
+}
+
+.dropdown-menu li {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
 }
 </style>
