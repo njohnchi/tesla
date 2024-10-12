@@ -7,7 +7,6 @@ import StrongestTopic from '@/components/StrongestTopic.vue'
 import UserLeaderboard from '@/components/UserLeaderboard.vue'
 import GroupsLeaderboard from '@/components/GroupsLeaderboard.vue'
 import ReportFilters from '@/components/ReportFilters.vue'
-
 </script>
 
 <template>

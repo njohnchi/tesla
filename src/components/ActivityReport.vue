@@ -16,10 +16,10 @@ const target = ref(null)
 
 const selectedOption = computed({
   get() {
-    return store.state.activityFilter;
+    return store.state.activityFilter
   },
   set(value) {
-    store.commit('setActivityFilter', value);
+    store.commit('setActivityFilter', value)
   }
 })
 
@@ -64,7 +64,7 @@ watchEffect(() => {
 
 <style scoped>
 .activity-chart {
-  border-top: 2px solid #EFF0F6;
+  border-top: 2px solid #eff0f6;
   margin: 0 15px;
 }
 
@@ -91,7 +91,7 @@ watchEffect(() => {
 }
 
 .dropdown-button:hover {
-  color: #1B59F8;
+  color: #1b59f8;
 }
 
 .dropdown-menu {

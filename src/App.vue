@@ -17,7 +17,7 @@ import SideBar from '@/components/layout/SideBar.vue'
   height: 100vh;
   width: 100vw;
   background-color: #e5e7eb;
-  display: flex
+  display: flex;
 }
 
 .content {

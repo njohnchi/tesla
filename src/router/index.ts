@@ -38,7 +38,7 @@ const router = createRouter({
       path: '/settings',
       name: 'settings',
       component: SettingsView
-    },
+    }
   ]
 })
 

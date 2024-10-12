@@ -4,8 +4,8 @@ import ArrowDownIcon from '@/components/icons/ArrowDownIcon.vue'
 import { onClickOutside } from '@vueuse/core'
 
 const props = defineProps<{
-  options: string[],
-  title: string,
+  options: string[]
+  title: string
   modelValue: string | null
 }>()
 
@@ -13,8 +13,8 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>()
 
-const selectedOption = ref<string>(props.modelValue || '');
-const isOpen = ref(false);
+const selectedOption = ref<string>(props.modelValue || '')
+const isOpen = ref(false)
 const target = ref(null)
 
 onClickOutside(target, () => {
@@ -22,17 +22,20 @@ onClickOutside(target, () => {
 })
 
 const toggleDropdown = () => {
-  isOpen.value = !isOpen.value;
-};
+  isOpen.value = !isOpen.value
+}
 
 const selectOption = (option: string) => {
-  selectedOption.value = option;
-  isOpen.value = false;
-};
+  selectedOption.value = option
+  isOpen.value = false
+}
 
-watch(() => selectedOption.value, (value) => {
-  emit('update:modelValue', value)
-})
+watch(
+  () => selectedOption.value,
+  (value) => {
+    emit('update:modelValue', value)
+  }
+)
 </script>
 
 <template>
@@ -65,7 +68,7 @@ watch(() => selectedOption.value, (value) => {
 
 .dropdown-button {
   background-color: white;
-  border: 1px solid #EFF0F6;
+  border: 1px solid #eff0f6;
   border-radius: 18px;
   padding: 10px 20px;
   font-size: 14px;
@@ -84,7 +87,7 @@ watch(() => selectedOption.value, (value) => {
 }
 
 .dropdown-button:hover {
-  background-color: #1B59F81A;
+  background-color: #1b59f81a;
 }
 
 .dropdown-menu {
@@ -101,7 +104,7 @@ watch(() => selectedOption.value, (value) => {
   padding: 0;
   max-height: 250px;
   overflow-y: auto;
-  z-index: 10
+  z-index: 10;
 }
 
 .dropdown-item {
@@ -111,6 +114,6 @@ watch(() => selectedOption.value, (value) => {
 }
 
 .dropdown-item:hover {
-  background-color: #1B59F81A;
+  background-color: #1b59f81a;
 }
 </style>

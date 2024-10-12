@@ -1,6 +1,5 @@
 import { reactive, ref } from 'vue'
 
-
 export const useActivity = () => {
   const series = ref([
     {
@@ -14,8 +13,8 @@ export const useActivity = () => {
       type: 'bar',
       height: '200px',
       toolbar: {
-        show: false,
-      },
+        show: false
+      }
     },
     plotOptions: {
       bar: {
@@ -28,28 +27,41 @@ export const useActivity = () => {
       width: 1
     },
     xaxis: {
-      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+      categories: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+      ]
     },
     yaxis: {
       min: 0,
       max: 200,
       tickAmount: 4,
       labels: {
-        show: true,
+        show: true
       },
       axisBorder: {
-        show: false,
+        show: false
       },
       axisTicks: {
-        show: false,
-      },
+        show: false
+      }
     },
     dataLabels: {
-      enabled: false,
+      enabled: false
     },
     legend: {
-      show: false,
-    },
+      show: false
+    }
   })
 
   const updateChart = (option: string) => {
@@ -60,7 +72,20 @@ export const useActivity = () => {
           data: [30, 40, 145, 50, 49, 160, 70, 91, 125, 150, 200, 120]
         }
       ]
-      options.xaxis.categories = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+      options.xaxis.categories = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+      ]
     } else if (option === 'Week') {
       series.value = [
         {
@@ -68,7 +93,7 @@ export const useActivity = () => {
           data: [40, 70, 55, 90, 110, 65, 75]
         }
       ]
-      options.xaxis.categories = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+      options.xaxis.categories = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     }
   }
 

@@ -43,6 +43,6 @@ defineProps<{
 }
 
 .download-btn:hover {
-  color: #1B59F8;
+  color: #1b59f8;
 }
 </style>

@@ -4,27 +4,28 @@ import { useStore } from '@/store'
 import { computed } from 'vue'
 
 const store = useStore()
-const timeframe = computed({get() {
-    return store.state.timeframeFilter;
+const timeframe = computed({
+  get() {
+    return store.state.timeframeFilter
   },
   set(value) {
-    store.commit('setTimeframeFilter', value);
+    store.commit('setTimeframeFilter', value)
   }
 })
 const people = computed({
   get() {
-    return store.state.peopleFilter;
+    return store.state.peopleFilter
   },
   set(value) {
-    store.commit('setPeopleFilter', value);
+    store.commit('setPeopleFilter', value)
   }
 })
 const topic = computed({
   get() {
-    return store.state.topicFilter;
+    return store.state.topicFilter
   },
   set(value) {
-    store.commit('setTopicFilter', value);
+    store.commit('setTopicFilter', value)
   }
 })
 </script>

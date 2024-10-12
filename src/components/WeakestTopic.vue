@@ -23,12 +23,10 @@ const topics = ref([
 
 <template>
   <Card>
-    <template #header>
-      Weakest Topic
-    </template>
+    <template #header> Weakest Topic </template>
     <div class="container">
       <div class="banner-wrapper" v-for="topic in topics" :key="topic.name">
-        <img class="banner-image" :src="topic.image" :alt="topic.name">
+        <img class="banner-image" :src="topic.image" :alt="topic.name" />
         <div class="content">
           <h3 class="topic-name">{{ topic.name }}</h3>
           <div class="status">
@@ -90,12 +88,16 @@ const topics = ref([
   border-radius: 5px;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(143.13deg, rgba(255, 191, 26, 0.2) 5.36%, rgba(255, 64, 128, 0.2) 94.64%);
+  background: linear-gradient(
+    143.13deg,
+    rgba(255, 191, 26, 0.2) 5.36%,
+    rgba(255, 64, 128, 0.2) 94.64%
+  );
 }
 
 .progress-bar {
   height: 100%;
-  background: linear-gradient(143.13deg, #FFBF1A 5.36%, #FF4080 54.64%);
+  background: linear-gradient(143.13deg, #ffbf1a 5.36%, #ff4080 54.64%);
   border-radius: 5px;
   transition: width 0.4s ease;
 }
@@ -110,7 +112,7 @@ const topics = ref([
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  color: #6B7280;
+  color: #6b7280;
   transition: color 0.3s ease;
 }
 </style>

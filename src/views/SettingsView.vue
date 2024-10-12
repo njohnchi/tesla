@@ -10,6 +10,4 @@ import PageHeader from '@/components/layout/PageHeader.vue'
   </main>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

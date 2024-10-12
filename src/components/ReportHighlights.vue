@@ -11,8 +11,8 @@ const options = {
   chart: {
     type: 'area',
     toolbar: {
-      show: false,
-    },
+      show: false
+    }
   },
   stroke: {
     curve: 'smooth',
@@ -28,96 +28,72 @@ const options = {
     }
   },
   dataLabels: {
-    enabled: false,
+    enabled: false
   },
   xaxis: {
     labels: {
-      show: false,
+      show: false
     },
     axisBorder: {
-      show: false,
+      show: false
     },
     axisTicks: {
-      show: false,
-    },
+      show: false
+    }
   },
   yaxis: {
     labels: {
-      show: false,
+      show: false
     },
     axisBorder: {
-      show: false,
+      show: false
     },
     axisTicks: {
-      show: false,
-    },
+      show: false
+    }
   },
   grid: {
-    show: false,
+    show: false
   },
   legend: {
-    show: false,
-  },
+    show: false
+  }
 }
 </script>
 
 <template>
   <div class="highlight-grid">
     <Card>
-      <template #header>
-        Active Users
-      </template>
-      <div class="highlight-text">
-        27<span>/80</span>
-      </div>
+      <template #header> Active Users </template>
+      <div class="highlight-text">27<span>/80</span></div>
     </Card>
     <Card>
-      <template #header>
-        Questions Answered
-      </template>
-      <div class="highlight-text">
-        3,455
-      </div>
+      <template #header> Questions Answered </template>
+      <div class="highlight-text">3,455</div>
     </Card>
     <Card>
-      <template #header>
-        Av. Session Length
-      </template>
-      <div class="highlight-text">
-        3,455
-      </div>
+      <template #header> Av. Session Length </template>
+      <div class="highlight-text">3,455</div>
     </Card>
     <Card>
-      <template #header>
-        Starting Knowledge
-      </template>
-      <div class="highlight-text">
-        64%
-      </div>
+      <template #header> Starting Knowledge </template>
+      <div class="highlight-text">64%</div>
       <template #footer>
-        <apexchart :options="options" :series="series"></apexchart >
+        <apexchart :options="options" :series="series"></apexchart>
       </template>
     </Card>
     <Card>
-      <template #header>
-        Current Knowledge
-      </template>
-      <div class="highlight-text">
-        86%
-      </div>
+      <template #header> Current Knowledge </template>
+      <div class="highlight-text">86%</div>
       <template #footer>
-        <apexchart :options="options" :series="series"></apexchart >
+        <apexchart :options="options" :series="series"></apexchart>
       </template>
     </Card>
     <Card>
-      <template #header>
-        Knowledge Gain
-      </template>
-      <div class="highlight-text">
-        +34%
-      </div>
+      <template #header> Knowledge Gain </template>
+      <div class="highlight-text">+34%</div>
       <template #footer>
-        <apexchart :options="options" :series="series"></apexchart >
+        <apexchart :options="options" :series="series"></apexchart>
       </template>
     </Card>
   </div>

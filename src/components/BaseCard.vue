@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="card">
@@ -39,7 +37,7 @@
 
 .card-title {
   padding: 10px 20px;
-  font-size: .8em;
+  font-size: 0.8em;
   font-weight: 600;
   color: #333;
 }

@@ -57,7 +57,6 @@ import ReportIcon from '@/components/icons/ReportIcon.vue'
   margin-bottom: 12px;
   margin-left: 12px;
   font-weight: 600;
-  color: #4D4D4D;;
+  color: #4d4d4d;
 }
-
 </style>
